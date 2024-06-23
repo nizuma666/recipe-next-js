@@ -1,96 +1,21 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import { useRouter } from "next/router";
-// import { Loading } from "../base/loading";
-
-// export default function PopularRecipe() {
-//   const [recipes, setRecipes] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     const fetchRecipes = async () => {
-//       try {
-//         setLoading(true);
-//         const response = await axios.get(
-//           `${process.env.NEXT_PUBLIC_BASE_URL}/recipes`
-//         );
-//         setRecipes(response.data.data);
-//         setLoading(false);
-//       } catch (error) {
-//         setError(error);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchRecipes();
-//   }, []);
-
-//   if (loading)
-//     return (
-//       <div className="flex justify-center my-32">
-//         <Loading />
-//       </div>
-//     );
-//   if (error) return <div>Error: {error.message}</div>;
-//   return (
-//     <div className="ml-0 pb-32 box-border">
-//       <div className="border-l-[25px] border-solid border-l-leery-lemon max-lg:border-none h-32 flex items-center max-lg:justify-center max-lg:mb-0 mb-12 mx-14">
-//         <p className="text-5xl text-navy ml-7">Popular Recipe</p>
-//       </div>
-//       <div className="flex flex-wrap gap-12 justify-center">
-//         {recipes.map((recipe) => (
-//           <button
-//             key={recipe.id}
-//             onClick={() => router.push(`/detailrecipe/${recipe.id}`)}
-//           >
-//             <div className=" relative hover:opacity-70">
-//               <img
-//                 className=" w-96 h-96 max-lg:w-72 max-lg:h-72"
-//                 src={`${recipe.image || "/assets/food.png"}`}
-//                 alt=""
-//               />
-//               <div className=" absolute bottom-4 left-5 font-semibold text-2xl w-36 capitalize text-left">
-//                 <p>{recipe.title}</p>
-//               </div>
-//             </div>
-//           </button>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { Loading } from "../base/loading";
+import { useDispatch, useSelector } from "react-redux";
+import { wrapper } from "../../configs/store";
+import { getRecipe } from "../../configs/redux/actions/recipeActions";
 
 export default function PopularRecipe() {
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1)
   const itemsPerPage = 6
   const router = useRouter();
+  const dispatch = useDispatch();
+  const {recipes, loading, error} = useSelector((state) => state.recipe);
 
-  const fetchRecipes = async (page) => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/recipes?page=${page}&limit=${itemsPerPage}`
-      );
-      setRecipes(response.data.data);
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchRecipes(currentPage);
-  }, [currentPage]);
+  React.useEffect(() => {
+    dispatch(getRecipe(currentPage))
+    // fetchRecipes(currentPage);
+  }, [currentPage, dispatch]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -104,14 +29,14 @@ export default function PopularRecipe() {
         <Loading />
       </div>
     );
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="ml-0 pb-32 box-border">
       <div className="border-l-[25px] border-solid border-l-leery-lemon max-lg:border-none h-32 flex items-center max-lg:justify-center max-lg:mb-0 mb-12 mx-14">
-        <p className="text-5xl text-navy ml-7">Popular Recipe</p>
+        <p className="text-5xl text-navy ml-7 max-md:text-3xl">Popular Recipe</p>
       </div>
-      <div className="flex flex-wrap gap-12 justify-center">
+      <div className="flex flex-wrap gap-12 max-lg:gap-2 justify-center">
         {recipes.map((recipe) => (
           <button
             key={recipe.id}
@@ -119,11 +44,11 @@ export default function PopularRecipe() {
           >
             <div className="relative hover:opacity-70">
               <img
-                className="w-96 h-96 max-lg:w-72 max-lg:h-72"
+                className="w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56 rounded-md"
                 src={`${recipe.image || "/assets/food.png"}`}
                 alt=""
               />
-              <div className="absolute bottom-4 left-5 font-semibold text-2xl w-36 capitalize text-left text-white">
+              <div className="absolute bottom-4 left-5 font-semibold text-2xl max-md:text-xl w-36 capitalize text-left text-white">
                 <p>{recipe.title}</p>
               </div>
             </div>
@@ -150,3 +75,8 @@ export default function PopularRecipe() {
     </div>
   );
 }
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
+  const { page = 1 } = context.query;
+  await store.dispatch(getRecipe(page));
+  return { props: {} };
+});

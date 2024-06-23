@@ -1,96 +1,118 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Loading } from "../../components/base/loading";
-import axios from "axios";
 import { GetTokenFromLocalStorage } from "../../services/GetToken";
 import Notification from "../../components/module/modal";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailRecipe } from "../../configs/redux/actions/recipeActions";
+import {
+  fetchLikedRecipes,
+  fetchSavedRecipes,
+  likeRecipe,
+  saveRecipe,
+} from "../../configs/redux/actions/likeActions";
+import { getCookie } from "cookies-next";
+import axios from "axios";
 
 export default function detailrecipe() {
   const router = useRouter();
-  const [recipe, setRecipe] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [message, setMessage] = useState("");
   const [titleMessage, setTitleMessage] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const { id } = router.query;
-  const token = GetTokenFromLocalStorage();
+  const token = getCookie("token");
+  const [isLogin, setIsLogin] = useState(true);
+  const dispatch = useDispatch();
+  // const token = useSelector((state) => state.auth.user);
+  const { loading, error, detailRecipe } = useSelector((state) => state.recipe);
+  const likedRecipes = useSelector((state) => state.likes.likedRecipes);
+  const savedRecipes = useSelector((state) => state.likes.savedRecipes);
+  const isLiked = likedRecipes.find(
+    (like) => like.recipe_id === detailRecipe.id
+  );
+  const isSaved = savedRecipes.find(
+    (save) => save.recipe_id === detailRecipe.id
+  );
+  console.log("saved", isLiked);
   useEffect(() => {
     if (!id) return;
-    const getrecipe = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/recipes/${id}`
-        );
-        setRecipe(response.data.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
-    };
-    getrecipe();
+    if (!token) {
+      dispatch(getDetailRecipe(id));
+      return;
+    }
+    dispatch(getDetailRecipe(id));
+    dispatch(fetchLikedRecipes(token));
+    dispatch(fetchSavedRecipes(token));
   }, [id]);
+
   const handleSave = () => {
     if (token == null) {
       setMessage("You must first log in");
       setTitleMessage("Failed to save recipes");
       setOpenModal(true);
+      setIsLogin(false);
     } else {
-      axios
-        .post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/recipes/save`,
-          {
-            recipe_id: recipe.id,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((res) => {
-          setMessage("Thank you for saving this recipe");
-          setTitleMessage("Success");
-          setOpenModal(true);
-        })
-        .catch((err) => {
-          setError(true);
-          setMessage(err.response.data.message);
-          setTitleMessage("Failed to save recipes");
-          setOpenModal(true);
-        });
-    }
-  };
-  const handleLike = () => {
-    axios
-      .post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/recipes/like`,
-        {
-          recipe_id: recipe.id,
-        },
-        {
+      if (isSaved) {
+        const config = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-      )
-      .then((res) => {
-        setMessage("Thank you for liking this recipe");
-        setTitleMessage("Success");
-        setOpenModal(true);
-      })
-      .catch((err) => {
-        setError(true);
-        setMessage(err.response.data.message);
-        setTitleMessage("Failed to like recipes");
-        setOpenModal(true);
-      });
+        };
+        axios
+          .delete(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/recipes/save/${isSaved.id}`,
+            config
+          )
+          .then((res) => {
+            console.log("berhasil unsave", res);
+            window.location.reload();
+          })
+          .catch((err) => {
+            console.log("error unsave", err);
+          });
+      } else {
+        dispatch(saveRecipe(detailRecipe.id, token));
+      }
+    }
+  };
+  const handleLike = () => {
+    if (token == null) {
+      setMessage("You must first log in");
+      setTitleMessage("Failed to save recipes");
+      setOpenModal(true);
+      setIsLogin(false);
+    } else {
+      if (isLiked) {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        axios
+          .delete(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/recipes/like/${isLiked.id}`,
+            config
+          )
+          .then((res) => {
+            console.log("berhasil unlike", res);
+            window.location.reload();
+          })
+          .catch((err) => {
+            console.log("error unlike", err);
+          });
+      } else {
+        dispatch(likeRecipe(detailRecipe.id, token));
+      }
+      
+    }
   };
   const closeModal = () => {
-    setOpenModal(false);
-    window.location.reload();
+    if (!isLogin) {
+      setOpenModal(false);
+      router.push("/auth/login");
+    } else {
+      setOpenModal(false);
+    }
   };
   if (loading)
     return (
@@ -110,15 +132,25 @@ export default function detailrecipe() {
     );
 
   return (
-    <div className="flex flex-col mb-40 gap-y-10 px-40 box-border">
+    <div className="flex flex-col mb-40 gap-y-10 px-40 max-lg:px-10 box-border">
       <div className="self-center">
-        <p className="font-medium text-6xl text-navy">{recipe.title}</p>
+        <p className="font-medium text-6xl text-navy max-lg:text-4xl text-center">
+          {detailRecipe.title}
+        </p>
       </div>
       <div className="self-center relative">
-        <img src={`${recipe.image || "/assets/food.png"}`} width={400} />
+        <img
+          src={`${detailRecipe.image || "/assets/food.png"}`}
+          width={400}
+          className="max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56 rounded-md"
+        />
         <div className="flex gap-x-2 absolute right-2 bottom-2">
           <button onClick={handleLike} className="hover:opacity-70">
-            <div className="  bg-leery-lemon rounded-md p-1">
+            <div
+              className={`bg-leery-lemon rounded-md p-1 ${
+                isLiked ? "bg-red-500" : ""
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -134,7 +166,11 @@ export default function detailrecipe() {
             </div>
           </button>
           <button onClick={handleSave} className="hover:opacity-70">
-            <div className="  bg-leery-lemon rounded-md p-1">
+            <div
+              className={`bg-leery-lemon rounded-md p-1 ${
+                isSaved ? "bg-red-500" : ""
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -167,16 +203,16 @@ export default function detailrecipe() {
       </div>
       </div> */}
       <div>
-        <p className="font-medium text-5xl mb-5">Ingredients</p>
+        <p className="font-medium text-5xl mb-5 max-lg:text-3xl">Ingredients</p>
         <div>
-          <p>{recipe.description}</p>
+          <p>{detailRecipe.description}</p>
         </div>
       </div>
       <div className="flex flex-col items-center gap-y-3">
-        <label className="self-start ml-32">Comment</label>
+        <label className="self-start ml-32 max-md:ml-0">Comment</label>
         <textarea
           placeholder="Write your comment here..."
-          className="w-3/4 h-60 bg-gray-100 rounded-md resize-none outline-none p-5 font-normal"
+          className="w-3/4 max-md:w-full max-md:h-32 max-md:text-sm h-60 bg-gray-100 rounded-md resize-none outline-none p-5 font-normal"
         ></textarea>
       </div>
     </div>

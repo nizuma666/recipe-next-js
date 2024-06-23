@@ -20,7 +20,7 @@ export const Loading = () => {
         />
         
       </svg>
-      <p className="font-semibold text-2xl">Proses.....</p>
+      <p className="font-semibold text-xl">Proses.....</p>
     </div>
   );
 };

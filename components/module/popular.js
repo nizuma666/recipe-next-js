@@ -7,16 +7,16 @@ export default function Popular() {
       <div className="mb-4 max-lg:hidden">
         <img src="/assets/vectorHorizontal.png" />
       </div>
-      <div className="flex flex-wrap gap-5 mb-4 max-lg:justify-center">
+      <div className="flex flex-wrap gap-5 mb-4 max-lg:justify-evenly max-md:gap-0">
         <div className=" relative">
-          <img className=" w-96 h-96 max-lg:w-72 max-lg:h-72" src="/assets/pizza.png" />
-          <div className=" absolute bottom-12 left-10 text-5xl text-white w-36">
+          <img className=" w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56" src="/assets/pizza.png" />
+          <div className=" absolute bottom-12 left-10 text-5xl text-white w-36 max-lg:text-2xl max-lg:left-4">
             <p>Pizza Lamoa</p>
           </div>
         </div>
         <div className=" relative">
-          <img className=" w-96 h-96 max-lg:w-72 max-lg:h-72" src="/assets/hamburger.png" />
-          <div className="absolute bottom-12 left-10 text-5xl text-white text-wrap w-36">
+          <img className=" w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56" src="/assets/hamburger.png" />
+          <div className="absolute bottom-12 left-10 text-5xl text-white text-wrap w-36 max-lg:text-2xl max-lg:left-4">
             <p>King Burger</p>
           </div>
         </div>

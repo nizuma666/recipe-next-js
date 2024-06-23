@@ -2,6 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Notification from "./modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { deleteCookie, getCookie } from "cookies-next";
 // import Button from "../base/button";
 
 function Navbar() {
@@ -18,38 +21,42 @@ function Navbar() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
+      const token = getCookie("token");
       setIsLoggedIn(!!token);
       // console.log(token);
     }
   }, []);
   const handleLogout = () => {
     if (typeof window !== "undefined") {
-      localStorage.removeItem("token");
-      localStorage.removeItem("refreshToken");
+      deleteCookie('token');
+      deleteCookie('refreshToken');
+      // localStorage.removeItem("token");
+      // localStorage.removeItem("refreshToken");
       setIsLoggedIn(false);
       router.push("/")
     }
   };
   const handleNavAddRecipe = () => {
-    if (isLoggedIn) {
-      router.push("/addrecipe");
-    } else {
-      setMessage("You must first log in");
-      setTitleMessage("Alert");
-      setOpenModal(true);
-      console.log(openModal);
-    }
+    router.push("/addrecipe")
+    // if (isLoggedIn) {
+    //   router.push("/addrecipe");
+    // } else {
+    //   setMessage("You must first log in");
+    //   setTitleMessage("Alert");
+    //   setOpenModal(true);
+    //   console.log(openModal);
+    // }
   };
   const handleNavProfile = () => {
-    if (isLoggedIn) {
-      router.push("/profile");
-    } else {
-      setMessage("You must first log in");
-      setTitleMessage("Alert");
-      setOpenModal(true);
-      console.log(openModal);
-    }
+    router.push("/profile")
+    // if (isLoggedIn) {
+    //   router.push("/profile");
+    // } else {
+    //   setMessage("You must first log in");
+    //   setTitleMessage("Alert");
+    //   setOpenModal(true);
+    //   console.log(openModal);
+    // }
   };
   const closeModal = () => {
     setOpenModal(false);
@@ -140,9 +147,9 @@ function Navbar() {
         </div>
 
         {isLoggedIn ? (
-          <div className="flex items-center gap-2 hover:border-2 hover:border-solid p-1 box-border rounded-md mt-4 lg:mt-0">
-            <div className="rounded-full bg-white p-2 lg:border-2 lg:border-solid">
-              <img src="/assets/profile.png" width={22} height={22} alt="" />
+          <div className="flex items-center gap-2 border-2 border-transparent hover:border-white p-1 box-border rounded-md mt-4 lg:mt-0">
+            <div className="rounded-full bg-white p-2 lg:border-2 lg:border-solid w-10 h-10 flex flex-col justify-center">
+            <FontAwesomeIcon icon={faUser} />
             </div>
             <button onClick={handleLogout} className={`${router.pathname !== "/" ? "text-navy" : "text-white max-lg:text-navy"}`}>
               Logout
@@ -150,11 +157,11 @@ function Navbar() {
           </div>
         ) : (
           <Link href="/auth/login">
-            <div className="flex items-center gap-2 hover:border-2 hover:border-solid p-1 box-border rounded-md mt-4 lg:mt-0">
-              <div className="rounded-full bg-white p-2">
-                <img src="/assets/profile.png" width={22} height={22} alt="" />
+            <div className="flex items-center gap-2 border-2 border-transparent hover:border-white p-1 box-border rounded-md mt-4 lg:mt-0">
+              <div className="rounded-full bg-white p-2 w-10 h-10 flex flex-col justify-center">
+              <FontAwesomeIcon icon={faUser} />
               </div>
-              <p className="text-white lg:text-navy">Login</p>
+              <p className="text-white max-lg:text-navy">Login</p>
             </div>
           </Link>
         )}
