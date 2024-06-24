@@ -3,8 +3,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
 import { Loading } from "../../components/base/loading";
-// import food from '/public/assets/food.png'
-// import { GetRecipes } from '../../pages/api/recipes';
 
 export default function SearchResult() {
   const searchParams = useSearchParams();

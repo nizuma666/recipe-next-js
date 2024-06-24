@@ -1,4 +1,3 @@
-import Recipes from "../../pages/api/recipes";
 import Button from "../base/button";
 
 export default function NewRecipe() {
