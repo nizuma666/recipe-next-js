@@ -2,10 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/auth/login": "pages/auth/login.js",
-  "/resultsearch": "pages/resultsearch.js",
-  "/addrecipe": "pages/addrecipe.js",
-  "/profile": "pages/profile.js",
-  "/detailrecipe/[id]": "pages/detailrecipe/[id].js"
+  "/": "pages/index.js"
 }

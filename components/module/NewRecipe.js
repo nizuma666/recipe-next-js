@@ -13,7 +13,7 @@ export default function NewRecipe() {
           <img src="/assets/burgernew.png" height={500} width={500} className="max-lg:w-60 max-lg:h-60" />
         </div>
         <div className="self-center w-1/2 max-lg:w-1/2 max-xl:w-2/5 max-md:w-full flex flex-col gap-10 max-lg:gap-5 max-lg:px-10 max-lg:items-center">
-          <p className="text-5xl max-md:text-2xl max-lg:text-3xl">Healthy Bone Broth Ramen Quick & Easy</p>
+          <p className="text-5xl max-md:text-2xl max-lg:text-3xl">Special Chicken & Shallot Burger Quick & Easy</p>
           <div className="border-2 border-solid border-b-swinging-wine w-24 max-lg:hidden"></div>
           <div>
             <p>
