@@ -11,7 +11,9 @@
 - [Installation](#installation)
 - [Documentation](#documentation)
 - [Visit](#visit)
-- [Other References](#other-references)
+- [Back-End Recipe](#back-end-recipe)
+- [Contact](#contact)
+- [Related Project](#related-project)
 
 ## About The Project
 Recipe is a website for exploring various food recipes. Users can also share their own recipes for others to see. Additionally, users can mark recipes they like and save them to view later.
@@ -48,34 +50,26 @@ Steps to install and set up this project on your local machine.
     ```
 
 ## Documentation
-### 1. Landing Page
-This is the first page visited when accessing the site.
-![landing-desktop](public/doc-readme-reipe/dashboard.png)
 
-### 2. Login
-The login page requires an email and password to access features like adding, liking, and saving recipes, as well as visiting profiles. The login button will be enabled once all form fields are filled out.
-![login](public/doc-readme-reipe/login.png)
-
-### 3. Register
-The registration page requires several mandatory fields to be filled out. The register button will be enabled once all fields are completed.
-![register](public/doc-readme-reipe/register.png)
-
-### 4. Profile
-This page displays a list of recipes created, liked, and saved by the user. The created recipes list includes options to edit and delete recipes, while the liked and saved lists include options to remove recipes from those lists.
-![profile](public/doc-readme-reipe/profile.png)
-
-### 5. Add & Edit Recipe
-This page contains the form needed to add a recipe. The same form is used to edit existing recipes.
-![add-edit-recipe](public/doc-readme-reipe/add-edit-recipe.png)
-
-### 6. Detail Recipe
-This page provides detailed information about a specific recipe. It includes options to like and save the recipe, but users must be logged in to use these features.
-![detailrecipe](public/doc-readme-reipe/detail-recipe.png)
+| Page            | Description                                                                                                         | Image                                                                  |
+|-----------------|---------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| Landing Page    | This is the first page visited when accessing the site.                                                             | ![landing-desktop](https://github.com/nizuma666/recipe-next-js/blob/master/public/doc-readme-reipe/dashboard2.png)              |
+| Login           | The login page requires an email and password to access features like adding, liking, and saving recipes, as well as visiting profiles. The login button will be enabled once all form fields are filled out. | ![login](public/doc-readme-reipe/login.png)                            |
+| Register        | The registration page requires several mandatory fields to be filled out. The register button will be enabled once all fields are completed. | ![register](public/doc-readme-reipe/register.png)                      |
+| Profile         | This page displays a list of recipes created, liked, and saved by the user. The created recipes list includes options to edit and delete recipes, while the liked and saved lists include options to remove recipes from those lists. | ![profile](public/doc-readme-reipe/profile.png)                        |
+| Add & Edit Recipe | This page contains the form needed to add a recipe. The same form is used to edit existing recipes.                | ![add-edit-recipe](public/doc-readme-reipe/add-edit-recipe.png)        |
+| Detail Recipe   | This page provides detailed information about a specific recipe. It includes options to like and save the recipe, but users must be logged in to use these features. | ![detailrecipe](public/doc-readme-reipe/detail-recipe.png)             |
 
 ## Visit
 If you are interested in seeing the website directly, please visit [this link](https://recipe-alpha-vert.vercel.app/).
 
-## Other References
+## Back-End Recipe
+The back-end system for this project was created by [muhammad risano](https://github.com/muhammadrisano) using express-js. If you want to see more about this back-end project, please visit [back-end recipe](https://github.com/nizuma666/pijar-mama-recipe)
+
+## Contact
+I am very open to criticism and suggestions from all of you, please contact syaifullohismail123@gmail.com email to give feedback.
+
+## Related Project
 - :rocket: [HTML](https://www.duniailkom.com/tutorial-belajar-html-dan-index-artikel-html/)
 - :rocket: [CSS](https://www.duniailkom.com/tutorial-belajar-css-dan-index-artikel-css/)
 - :rocket: [Javascript](https://www.duniailkom.com/tutorial-belajar-javascript-dan-index-artikel-javascript/)
