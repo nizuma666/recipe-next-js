@@ -42,13 +42,13 @@ export default function PopularRecipe() {
             key={recipe.id}
             onClick={() => router.push(`/detailrecipe/${recipe.id}`)}
           >
-            <div className="relative hover:opacity-70">
+            <div className="relative ">
               <img
-                className="w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56 rounded-md"
+                className="w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56 rounded-md hover:opacity-70"
                 src={`${recipe.image || "/assets/food.png"}`}
                 alt=""
               />
-              <div className="absolute bottom-4 left-5 font-semibold text-2xl max-md:text-xl w-36 capitalize text-left text-white">
+              <div className="absolute bottom-4 left-5 font-semibold text-2xl max-md:text-xl w-80 capitalize text-white text-center bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
                 <p>{recipe.title}</p>
               </div>
             </div>
