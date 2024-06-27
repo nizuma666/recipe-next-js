@@ -9,6 +9,7 @@
 - [About The Project](#about-the-project)
 - [Usage](#usage)
 - [Installation](#installation)
+- [Project Structure](project-structure)
 - [Documentation](#documentation)
 - [Features](#features)
 - [Visit](#visit)
@@ -51,6 +52,31 @@ Steps to install and set up this project on your local machine.
     ```bash
     yarn dev
     ```
+## Project Structure
+```bash
+├───components
+│   ├───base
+│   └───module
+├───configs
+│   └───redux
+│       ├───actions
+│       └───reducers
+├───pages
+│   ├───addrecipe
+│   ├───auth
+│   │   ├───login
+│   │   └───register
+│   ├───detailrecipe
+│   ├───editrecipe
+│   ├───profile
+│   ├───resultsearch
+│   └───trycode
+├───public
+│   ├───assets
+│   └───doc-readme-reipe
+├───services
+└───styles
+```
 
 ## Documentation
 
