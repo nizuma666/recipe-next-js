@@ -48,7 +48,7 @@ export default function PopularRecipe() {
                 src={`${recipe.image || "/assets/food.png"}`}
                 alt=""
               />
-              <div className="absolute bottom-4 left-5 font-semibold text-2xl max-md:text-xl w-80 capitalize text-white text-center bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
+              <div className="absolute bottom-4 left-5 font-semibold text-2xl max-md:text-sm max-lg:text-xl w-80 max-md:w-40 max-lg:w-48 capitalize text-white text-center bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
                 <p>{recipe.title}</p>
               </div>
             </div>

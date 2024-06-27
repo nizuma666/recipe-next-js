@@ -13,6 +13,7 @@ import {
 } from "../../configs/redux/actions/likeActions";
 import { getCookie } from "cookies-next";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function detailrecipe() {
   const router = useRouter();
@@ -64,7 +65,6 @@ export default function detailrecipe() {
             config
           )
           .then((res) => {
-            console.log("berhasil unsave", res);
             window.location.reload();
           })
           .catch((err) => {
@@ -72,6 +72,7 @@ export default function detailrecipe() {
           });
       } else {
         dispatch(saveRecipe(detailRecipe.id, token));
+        Swal.fire("Thank you for saving this recipe")
       }
     }
   };
@@ -102,6 +103,7 @@ export default function detailrecipe() {
           });
       } else {
         dispatch(likeRecipe(detailRecipe.id, token));
+        Swal.fire("Thank you for liking this recipe")
       }
       
     }

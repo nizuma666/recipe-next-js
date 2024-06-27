@@ -10,13 +10,13 @@ export default function Popular() {
       <div className="flex flex-wrap gap-5 mb-4 max-lg:justify-evenly max-md:gap-0">
         <div className=" relative">
           <img className=" w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56" src="/assets/pizza.png" />
-          <div className="w-80 absolute bottom-10 p-1 rounded-lg left-6 text-center text-5xl text-white max-lg:text-2xl max-lg:left-4 bg-leery-lemon bg-opacity-60">
+          <div className="w-80 max-md:w-40 max-lg:w-48 absolute bottom-10 p-1 rounded-lg left-6 text-center text-5xl text-white max-lg:text-2xl max-lg:left-4 bg-leery-lemon bg-opacity-60">
             <p>Pizza Lamoa</p>
           </div>
         </div>
         <div className=" relative">
           <img className=" w-96 h-96 max-md:w-48 max-md:h-48 max-lg:w-56 max-lg:h-56" src="/assets/hamburger.png" />
-          <div className="absolute bottom-8 left-10 p-3 rounded-lg text-center text-5xl text-white text-wrap w-80 max-lg:text-2xl max-lg:left-4 bg-leery-lemon bg-opacity-60">
+          <div className="absolute bottom-8 left-10 p-3 rounded-lg text-center text-5xl text-white text-wrap w-80 max-md:w-40 max-lg:w-48 max-lg:text-2xl max-lg:left-4 bg-leery-lemon bg-opacity-60">
             <p>King Burger</p>
           </div>
         </div>

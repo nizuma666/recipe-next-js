@@ -7,6 +7,7 @@ import Notification from "../../../components/module/modal";
 import { useDispatch, useSelector } from "react-redux";
 import { Loading } from "../../../components/base/loading";
 import { login } from "../../../configs/redux/actions/authActions";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const [message, setMessage] = useState("");
@@ -49,25 +50,22 @@ export default function Login() {
   useEffect(() => {
     if (!loading) {
       if (error) {
-        setTitleMessage("Login Failed");
-        setMessage(error);
-        setOpenModal(true);
+        Swal.fire('Oops...', 'email or password incorrect', 'error')
       } else if (user.email) {
-        setTitleMessage("Login Success");
-        setMessage("You have successfully logged in.");
-        setOpenModal(true);
+        Swal.fire('Login Success', 'Success')
+        router.push("/")
       }
     }
   }, [loading, error, user]);
 
-  const closeModal = () => {
-    setOpenModal(false);
-    if (error) {
-      router.push("/auth/login");
-    } else {
-      router.push("/");
-    }
-  };
+  // const closeModal = () => {
+  //   setOpenModal(false);
+  //   if (error) {
+  //     router.push("/auth/login");
+  //   } else {
+  //     router.push("/");
+  //   }
+  // };
   const handleLogo = () => {
     router.push("/")
   }
@@ -134,13 +132,13 @@ export default function Login() {
             )}
           </Button>
         </div>
-        <Notification
+        {/* <Notification
           isOpen={openModal}
           onClose={closeModal}
           title={titleMessage}
         >
           {message}
-        </Notification>
+        </Notification> */}
         <div className="self-center max-lg:mr-0">
           <p className="text-gray-dark text-xs font-semibold">
             Forgot Password ?
