@@ -10,8 +10,11 @@
 - [Usage](#usage)
 - [Installation](#installation)
 - [Documentation](#documentation)
+- [Feature](#feature)
 - [Visit](#visit)
 - [Back-End Recipe](#back-end-recipe)
+- [Contributing](#contributing)
+- [License](#license)
 - [Contact](#contact)
 - [Related Project](#related-project)
 
@@ -60,11 +63,36 @@ Steps to install and set up this project on your local machine.
 | Add & Edit Recipe | This page contains the form needed to add a recipe. The same form is used to edit existing recipes.                | ![add-edit-recipe](public/doc-readme-reipe/add-edit-recipe.png)        |
 | Detail Recipe   | This page provides detailed information about a specific recipe. It includes options to like and save the recipe, but users must be logged in to use these features. | ![detailrecipe](public/doc-readme-reipe/detail-recipe.png)             |
 
+## Features
+- Using Next.js for project structure
+- Implementing Client-Side Rendering (CSR) and Server-Side Rendering (SSR) for page rendering
+- API management with Axios
+- State management using Redux
+- Managing JWT tokens in cookies
+- Implementing Protected Routes for specific pages
+- Create, edit, and delete recipes
+- Like and save recipes
+
 ## Visit
 If you are interested in seeing the website directly, please visit [this link](https://recipe-alpha-vert.vercel.app/).
 
 ## Back-End Recipe
 The back-end system for this project was created by [muhammad risano](https://github.com/muhammadrisano) using express-js. If you want to see more about this back-end project, please visit [back-end recipe](https://github.com/nizuma666/pijar-mama-recipe)
+
+## Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/Feature`)
+3. Commit your Changes (`git commit -m 'Add some Feature'`)
+4. Push to the Branch (`git push origin feature/Feature`)
+5. Open a Pull Request
+
+## License
+Distributed undet MIT License. see [LICENSE](https://github.com/nizuma666/recipe-next-js/blob/master/LICENSE) for more information.
 
 ## Contact
 I am very open to criticism and suggestions from all of you, please contact syaifullohismail123@gmail.com email to give feedback.
