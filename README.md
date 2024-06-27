@@ -10,7 +10,7 @@
 - [Usage](#usage)
 - [Installation](#installation)
 - [Documentation](#documentation)
-- [Feature](#feature)
+- [Features](#features)
 - [Visit](#visit)
 - [Back-End Recipe](#back-end-recipe)
 - [Contributing](#contributing)
