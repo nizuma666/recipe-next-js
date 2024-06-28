@@ -101,6 +101,7 @@ Steps to install and set up this project on your local machine.
 - Like and save recipes
 
 ## Tester Account
+Please use the following account to try out all the features in this project
 - Email: syaiful@gmail.com
 - Pass: abcd1234
 
