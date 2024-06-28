@@ -12,6 +12,7 @@
 - [Project Structure](project-structure)
 - [Documentation](#documentation)
 - [Features](#features)
+- [Tester Account](#tester-account)
 - [Visit](#visit)
 - [Back-End Recipe](#back-end-recipe)
 - [Contributing](#contributing)
@@ -98,6 +99,10 @@ Steps to install and set up this project on your local machine.
 - Implementing Protected Routes for specific pages
 - Create, edit, and delete recipes
 - Like and save recipes
+
+## Tester Account
+- Email: syaiful@gmail.com
+- Pass: abcd1234
 
 ## Visit
 If you are interested in seeing the website directly, please visit [this link](https://recipe-alpha-vert.vercel.app/).
