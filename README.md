@@ -128,9 +128,3 @@ Distributed undet MIT License. see [LICENSE](https://github.com/nizuma666/recipe
 
 ## Contact
 I am very open to criticism and suggestions from all of you, please contact syaifullohismail123@gmail.com email or [My Linkedin](https://www.linkedin.com/in/syaifulloh-ismail/) to give feedback.
-
-## Related Project
-- :rocket: [HTML](https://www.duniailkom.com/tutorial-belajar-html-dan-index-artikel-html/)
-- :rocket: [CSS](https://www.duniailkom.com/tutorial-belajar-css-dan-index-artikel-css/)
-- :rocket: [Javascript](https://www.duniailkom.com/tutorial-belajar-javascript-dan-index-artikel-javascript/)
-- 🚀 [Cookie-Next](https://www.npmjs.com/package/cookies-next)
