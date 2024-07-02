@@ -12,6 +12,7 @@
 - [Project Structure](project-structure)
 - [Documentation](#documentation)
 - [Features](#features)
+- [Tester Account](#tester-account)
 - [Visit](#visit)
 - [Back-End Recipe](#back-end-recipe)
 - [Contributing](#contributing)
@@ -99,6 +100,11 @@ Steps to install and set up this project on your local machine.
 - Create, edit, and delete recipes
 - Like and save recipes
 
+## Tester Account
+Please use the following account to try out all the features in this project
+- Email: syaiful@gmail.com
+- Pass: abcd1234
+
 ## Visit
 If you are interested in seeing the website directly, please visit [this link](https://recipe-alpha-vert.vercel.app/).
 
@@ -121,10 +127,4 @@ Don't forget to give the project a star! Thanks again!
 Distributed undet MIT License. see [LICENSE](https://github.com/nizuma666/recipe-next-js/blob/master/LICENSE) for more information.
 
 ## Contact
-I am very open to criticism and suggestions from all of you, please contact syaifullohismail123@gmail.com email or [linkedin](https://www.linkedin.com/in/syaifulloh-ismail/) to give feedback.
-
-## Related Project
-- :rocket: [HTML](https://www.duniailkom.com/tutorial-belajar-html-dan-index-artikel-html/)
-- :rocket: [CSS](https://www.duniailkom.com/tutorial-belajar-css-dan-index-artikel-css/)
-- :rocket: [Javascript](https://www.duniailkom.com/tutorial-belajar-javascript-dan-index-artikel-javascript/)
-- 🚀 [Cookie-Next](https://www.npmjs.com/package/cookies-next)
+I am very open to criticism and suggestions from all of you, please contact syaifullohismail123@gmail.com email or [My Linkedin](https://www.linkedin.com/in/syaifulloh-ismail/) to give feedback.
