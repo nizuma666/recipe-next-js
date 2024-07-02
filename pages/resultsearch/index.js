@@ -63,7 +63,7 @@ export default function SearchResult() {
               src={`${recipe.image || "/assets/food.png"}`}
               alt={recipe.title || "Recipe Image"}
             />
-            <div className="absolute bottom-4 left-5 font-semibold text-2xl w-36 max-md:w-24 capitalize text-left max-md:text-xs text-white">
+            <div className="absolute bottom-4 left-5 font-semibold text-2xl w-36 max-md:w-24 capitalize text-left max-md:text-xs text-white bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
               <p>{recipe.title}</p>
             </div>
           </div>

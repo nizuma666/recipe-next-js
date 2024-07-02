@@ -287,7 +287,7 @@ function Profile() {
                       src={`${recipe.image || "/assets/food.png"}`}
                       alt={recipe.title}
                     />
-                    <div className="absolute bottom-2 left-2 font-semibold text-sm md:text-lg lg:text-xl w-28 md:w-32 lg:w-36 capitalize text-white">
+                    <div className="absolute bottom-2 left-2 font-semibold text-sm md:text-lg lg:text-xl w-28 md:w-32 lg:w-36 capitalize text-white bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
                       <p>{recipe.title}</p>
                     </div>
                   </div>
@@ -330,7 +330,7 @@ function Profile() {
                       src={`${save.recipe.image || "/assets/food.png"}`}
                       alt={save.recipe.title}
                     />
-                    <div className="absolute bottom-2 left-2 font-semibold text-sm md:text-lg lg:text-xl w-28 md:w-32 lg:w-36 capitalize text-white">
+                    <div className="absolute bottom-2 left-2 font-semibold text-sm md:text-lg lg:text-xl w-28 md:w-32 lg:w-36 capitalize text-white bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
                       <p>{save.recipe.title}</p>
                     </div>
                   </div>
@@ -367,7 +367,7 @@ function Profile() {
                       src={`${like.recipe.image || "/assets/food.png"}`}
                       alt={like.recipe.title}
                     />
-                    <div className="absolute bottom-2 left-2 font-semibold text-sm md:text-lg lg:text-xl w-28 md:w-32 lg:w-36 capitalize text-white">
+                    <div className="absolute bottom-2 left-2 font-semibold text-sm md:text-lg lg:text-xl w-28 md:w-32 lg:w-36 capitalize text-white bg-leery-lemon bg-opacity-70 p-1 rounded-lg">
                       <p>{like.recipe.title}</p>
                     </div>
                   </div>

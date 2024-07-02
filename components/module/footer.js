@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="bg-leery-lemon h-[685px] max-lg:h-96 flex flex-col justify-between">
+    <div className="bg-leery-lemon h-[400px] max-lg:h-96 flex flex-col justify-between">
       <div className="flex flex-col justify-center items-center py-8 box-border flex-grow">
         <div className="text-center">
           <p className="text-navy text-7xl max-md:text-3xl max-lg:text-4xl">Eat, Cook, Repeat</p>
